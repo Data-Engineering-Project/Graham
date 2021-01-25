@@ -16,8 +16,8 @@ A simple pipeline to extract data from stock exchange websites, aggregate and an
 
 ## To Do
 - [X] Setup selenium, load NSE homepage
-- [ ] Add links of pages where data can be extracted
-- [ ] Use selenium to download the files
+- [X] Add links of pages where data can be extracted
+- [X] Use selenium to download the files
 - [ ] Process downloaded files
 
 ## Nice to have
