@@ -9,7 +9,12 @@ A simple pipeline to extract data from stock exchange websites, aggregate and an
 - To run `python .\dataFetch\main.py`
 
 ## Config.json
-`{ "root": "Location to your Graham folder" }`
+```JSON
+{ 
+    "root": "Location to your Graham folder",
+    "delete_files_after_processing": false //default if not specified here is true
+}
+```
 
 ## In development (Nice to have) setup
 - `pip install scrapy`
