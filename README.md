@@ -6,7 +6,9 @@ A simple pipeline to extract data from stock exchange websites, aggregate and an
 - Download appropriate driver for [Chrome - click me](https://chromedriver.storage.googleapis.com/index.html?path=88.0.4324.96/)
 - Place driver in root folder
 - Create config.json in root folder with values as mentioned in next section but specific to your environment
-- To run `python .\dataFetch\main.py`
+- `pip install pandas`
+- `pip install pyMongo`
+- To run `python .\main.py`
 
 ## Config.json
 ```JSON

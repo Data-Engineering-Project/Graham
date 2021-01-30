@@ -16,20 +16,19 @@ class PreProcess():
           zip_ref.extractall(self.downlad_folder)
         os.remove(os.path.join(self.downlad_folder,f))
 
-  def rename_files(self, new_filename = ''):
+  def get_prefix(self):
     files = os.listdir(self.downlad_folder)
     new_filename = ''
     for f in files:
       if re.search('^cm.*bhav[.]csv$', f):
         new_filename = re.search('^cm(.*)bhav[.]csv$', f).group(1)
-        os.rename(os.path.join(self.downlad_folder, f), os.path.join(self.downlad_folder, new_filename + 'Main.csv'))
-    rename_dict = {
-      'block.csv': new_filename + 'Block.csv',
-      'ShortSelling.csv':new_filename + 'Short.csv'
-    }
-    for f in files:
-      if f in rename_dict:
-        src = os.path.join(self.downlad_folder, f)
-        dst = os.path.join(self.downlad_folder, rename_dict[f])
-        os.rename(src, dst)
- 
+    self.prefix = new_filename
+    return self.prefix
+
+  def rename_file(self, old_filename = '', new_filename = ''):
+    updated_new_filename = self.prefix + new_filename
+    src = os.path.join(self.downlad_folder, old_filename)
+    dst = os.path.join(self.downlad_folder, updated_new_filename)
+    os.rename(src, dst)
+  
+  

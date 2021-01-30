@@ -1,17 +1,14 @@
-import json
 from data_fetch.DataDownload import DataDownload
 from data_process.DataProcess import DataProcess
+from config import config
 
-config = json.loads(open('./config.json').read())
-root_path = config['root']
+print(config)
 
-try:
-  delete_files_after_processing = config['delete_files_after_processing']
-except:
-  delete_files_after_processing = True
+if config["data_download"]:
+  data_download = DataDownload(config["root_path"])
+  data_download.fetch_data()
 
-data_download = DataDownload(root_path)
-data_download.fetch_data()
-
-processor = DataProcess(root_path)
-processor.process_data()
+if config["data_process"]:
+  processor = DataProcess(config["root_path"])
+  processor.process_files()
+  processor.process_data()
