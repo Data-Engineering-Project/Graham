@@ -4,7 +4,8 @@ config = {
   "root_path": '',
   "data_download": '',
   "data_process": '',
-  "delete_files_after_processing": ''
+  "delete_files_after_processing": '',
+  "db": ''
 }
 
 config_values = json.loads(open('./config.json').read())
@@ -33,3 +34,9 @@ try:
 except:
   data_process = True
 config["data_process"] = data_process
+
+try:
+  db = config_values['db']
+except:
+  db = 'market'
+config['db'] = db

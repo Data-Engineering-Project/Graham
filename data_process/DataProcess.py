@@ -3,18 +3,17 @@ import re
 import pymongo
 from data_process.DataExtraction import PreProcess
 from data_process.MainData import MainData
-from data_process.Database import Database
 
 class DataProcess():
 
-    def __init__(self, root_path):
+    def __init__(self, root_path, db):
         self.download_path = os.path.join(root_path, 'downloads')
         self.prefix = ''
         self.rename_dict = {
             'block.csv': 'Block.csv',
             'ShortSelling.csv': 'Short.csv'
         }
-        self.db = Database()
+        self.db = db
 
     def process_files(self):
         preProcess = PreProcess(self.download_path)

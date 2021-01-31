@@ -10,6 +10,9 @@ class MainData():
 
   def parse_data(self):
     data = pd.read_csv(self.file)
-    # del data[12]
-    print(data)
+    del data[data.keys()[13]]
+    data = data[data['SERIES'] == 'EQ']
+    save_data = data.to_dict(orient='records')
+    print(save_data[1:5])
+    self.db.write_many_to_collection('equity', save_data)
     

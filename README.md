@@ -8,14 +8,22 @@ A simple pipeline to extract data from stock exchange websites, aggregate and an
 - Create config.json in root folder with values as mentioned in next section but specific to your environment
 - `pip install pandas`
 - `pip install pyMongo`
+- Setup MongoDB to listen to localhost on port 27107
 - To run `python .\main.py`
 
 ## Config.json
+- default values specified
 ```JSON
 { 
-    "root": "Location to your Graham folder",
-    "delete_files_after_processing": false //default if not specified here is true
+    "root": "Location to your Graham folder <No default, must be set manually>",
+    "delete_files_after_processing": true, 
+    "data_download": true,
+    "data_process": true
 }
+- `root`: must specify the root location of the project
+- `delete_files_after_processing`: deletes all files after processing
+- `data_download`: determines if the download phase is executed which includes running selenium and downloading the files
+- `data_process`: determines if the processing phase is executed which includes renaming file, parsing file and storing data in mongodb
 ```
 
 ## In development (Nice to have) setup
@@ -25,8 +33,12 @@ A simple pipeline to extract data from stock exchange websites, aggregate and an
 - [X] Setup selenium, load NSE homepage
 - [X] Add links of pages where data can be extracted
 - [X] Use selenium to download the files
-- [ ] Process downloaded files
+- [X] Rename Downloaded files
+- [X] Store processed data in MongoDB
+- [ ] Implement UI to view data
+- [ ] Run basic analytics or comparisons between data
 
 ## Nice to have
+- [ ] Implement intermediate language for scripting Selenium to download data
 - [ ] Go headless which is possible by replacing selenium with scrapy or beautiful soup and perform data fetch 
 
