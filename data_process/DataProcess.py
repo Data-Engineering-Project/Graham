@@ -3,6 +3,8 @@ import re
 import pymongo
 from data_process.DataExtraction import PreProcess
 from data_process.MainData import MainData
+from data_process.ShortData import ShortData
+from data_process.BlockData import BlockData
 
 class DataProcess():
 
@@ -29,3 +31,7 @@ class DataProcess():
     def process_data(self):
         main_file_data = MainData(self.download_path, self.prefix+'Main.csv', self.db)
         main_file_data.parse_data()
+        short_file_data = ShortData(self.download_path, self.prefix+'Short.csv', self.db)
+        short_file_data.parse_data()
+        block_file_data = BlockData(self.download_path, self.prefix+'Block.csv', self.db)
+        block_file_data.parse_data()

@@ -36,7 +36,7 @@ except:
 config["data_process"] = data_process
 
 try:
-  db = config_values['db']
+  db = config_values['database']
 except:
   db = 'market'
 config['db'] = db

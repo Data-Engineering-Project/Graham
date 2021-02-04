@@ -14,4 +14,3 @@ class Database():
   def write_many_to_collection(self, name, values):
     collection = self.db[name]
     collection.insert_many(values)
-  
