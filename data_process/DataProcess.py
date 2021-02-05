@@ -5,6 +5,7 @@ from data_process.DataExtraction import PreProcess
 from data_process.MainData import MainData
 from data_process.ShortData import ShortData
 from data_process.BlockData import BlockData
+from data_process.BulkData import BulkData
 
 class DataProcess():
 
@@ -13,7 +14,8 @@ class DataProcess():
         self.prefix = ''
         self.rename_dict = {
             'block.csv': 'Block.csv',
-            'ShortSelling.csv': 'Short.csv'
+            'ShortSelling.csv': 'Short.csv',
+            'bulk.csv': 'Bulk.csv'
         }
         self.db = db
 
@@ -35,3 +37,10 @@ class DataProcess():
         short_file_data.parse_data()
         block_file_data = BlockData(self.download_path, self.prefix+'Block.csv', self.db)
         block_file_data.parse_data()
+        bulk_file_data = BulkData(self.download_path, self.prefix+'Bulk.csv', self.db)
+        bulk_file_data.parse_data()
+    
+    def process_backup_data(self):
+        pass
+        # run a loop on backup folder to process each file and store in db
+        # try using process_data function if possible

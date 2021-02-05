@@ -26,7 +26,6 @@ class Driver():
   def wait_until_downloads_complete(self):
     download_url = "chrome://downloads"
     if not self.driver.current_url.startswith(download_url):
-
       self.driver.get(download_url)
 
     def _all_files_downloaded_script(driver):

@@ -40,3 +40,4 @@ try:
 except:
   db = 'market'
 config['db'] = db
+

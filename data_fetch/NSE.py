@@ -34,6 +34,14 @@ class NSE():
     block_deals_xpath = '/html/body/div[2]/div[3]/div[2]/div/div[2]/div[1]/div[1]/div[1]/div[1]/div/table/tbody/tr[18]/td[1]/a'
     self._download_file_by_xpath(block_deals_xpath)
 
+  def download_bulk_deals(self):
+    bulk_deals_xpath = '/html/body/div[2]/div[3]/div[2]/div/div[2]/div[1]/div[1]/div[1]/div[1]/div/table/tbody/tr[17]/td[1]/a'
+    self._download_file_by_xpath(bulk_deals_xpath)
+  
+  # def download_market_activity_report(self):
+  #   market_activity_report = '/html/body/div[2]/div[3]/div[2]/div/div[2]/div[1]/div[1]/div[1]/div[1]/div/table/tbody/tr[6]/td[1]/a'
+  #   self._download_file_by_xpath(market_activity_report)
+
   # close the driver
   def close_page(self):
     self.driver.close()

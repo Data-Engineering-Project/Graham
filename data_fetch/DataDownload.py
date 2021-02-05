@@ -18,7 +18,7 @@ class DataDownload():
     nse_app.download_bhavcopy()
     nse_app.download_short_selling()
     nse_app.download_block_deals()
+    nse_app.download_bulk_deals()
+    # nse_app.download_market_activity_report()
     driver.wait_until_downloads_complete()
     driver.quit()
-
-# cleanup(download_path, delete_files=delete_files_after_processing)
