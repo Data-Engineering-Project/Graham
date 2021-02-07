@@ -1,0 +1,28 @@
+{
+  "name": "Get top 3 losers",
+  "runtime": "4:30 PM",
+  "cycletime": "86400",
+  "procedure": [
+    { 
+      "cmd": "GOTO", 
+      "link": "https://www.nseindia.com/"
+    },{
+      "cmd": "EXTRACT",
+      "collection": "gainer",
+      "fields": [
+        {
+          "link": "/html/body/div[7]/div[1]/section[1]/div/div/div/div/div[1]/div[2]/div/div/div/div[1]/div/div/div[2]/div/div/div/div[1]/div[2]/div/table/tbody/tr[1]/td[1]/a", 
+          "key": "loser1"
+        },{
+          "link": "/html/body/div[7]/div[1]/section[1]/div/div/div/div/div[1]/div[2]/div/div/div/div[1]/div/div/div[2]/div/div/div/div[1]/div[2]/div/table/tbody/tr[2]/td[1]/a", 
+          "key": "loser2"
+        },{
+          "link": "/html/body/div[7]/div[1]/section[1]/div/div/div/div/div[1]/div[2]/div/div/div/div[1]/div/div/div[2]/div/div/div/div[1]/div[2]/div/table/tbody/tr[3]/td[1]/a", 
+          "key": "loser3"
+        }
+      ]       
+    },{
+      "cmd": "EXIT"
+    }
+  ]
+}
