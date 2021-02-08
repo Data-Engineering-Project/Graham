@@ -13,7 +13,7 @@ class Driver():
     chrome_options.add_experimental_option("prefs",prefs)
     self.chrome_options = chrome_options
     self.path_to_driver = path_to_driver
-    self.instruction_channel = 'selenium_1'
+    self.instruction_channel = 'instruction'
     self.data_channel = 'data'
     self.instructions = []
     self.producer = KafkaProducer(bootstrap_servers="localhost:9092")
@@ -32,7 +32,11 @@ class Driver():
   def goto_page(self, page_link):
     self._create_driver()
     self.driver.get(page_link)
-    
+
+  def fill_field(self, field, value):
+    # use the selenium method to fill a value to a field
+    pass
+
   def _extract_value_by_xpath(self, xpath):
     cont = True
     count = 0
@@ -54,7 +58,8 @@ class Driver():
       "value": {}
     }
     for field in fields:
-      collection["value"][field['key']] = self._extract_value_by_xpath(field['link'])
+      value = self._extract_value_by_xpath(field['link'])
+      collection["value"][field['key']] = value
     return collection
 
   def click_link(self, xpath):
@@ -84,6 +89,10 @@ class Driver():
         if cmd == 'GOTO':
           link = instruction['link']
           self.goto_page(link)
+        elif cmd == 'FILL':
+          field = instruction['field']
+          value = instruction['value']
+          self.fill_field(field, value)
         elif cmd == 'EXTRACT':
           fields = instruction['fields']
           collection = instruction['collection']

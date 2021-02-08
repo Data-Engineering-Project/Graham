@@ -1,7 +1,9 @@
 {
-  "name": "Get top 3 losers",
-  "runtime": "4:30 PM",
-  "cycletime": "86400",
+  "name": "Get top 3 gainers",
+  "id": 1,
+  "time": {
+    "cycle": 30
+  },
   "procedure": [
     { 
       "cmd": "GOTO", 
