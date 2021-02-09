@@ -16,10 +16,10 @@ class Ops():
       ops_file = path.join(self.ops_folder_path, filename)
       with open(ops_file) as f:
         operation = json.loads(f.read())
-        self.operations[str(operation['id'])] = operation
+        self.operations[str(operation['id'])] = operation   
         exec_plan = {
-          'id': str(operation['id']),
-          'time': {
+          'id': str(operation['id']), 
+          'time': { 
             'nextexec': int(time.time()),
             'interval': operation['time']['interval']
           }

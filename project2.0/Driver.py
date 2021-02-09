@@ -16,7 +16,6 @@ class Driver():
     self.instruction_channel = 'instruction'
     self.data_channel = 'data'
     self.instructions = []
-    self.producer = KafkaProducer(bootstrap_servers="localhost:9092")
     self.running = True
     self.retry_count = 5
 
@@ -27,7 +26,9 @@ class Driver():
     self.consumer = KafkaConsumer(bootstrap_servers="localhost:9092", consumer_timeout_ms=2000)
     self.consumer.subscribe(self.instruction_channel)
     for msg in self.consumer:
-      self.instructions.append(json.loads(msg.value.decode()))
+      instructions = json.loads(msg.value.decode())
+      self.instructions.append(instructions)
+      print(instructions)
 
   def goto_page(self, page_link):
     self._create_driver()
@@ -79,6 +80,7 @@ class Driver():
     self.driver.quit()
 
   def write_collection_to_db(self, data):
+    self.producer = KafkaProducer(bootstrap_servers="localhost:9092")
     encoded_data = bytes(json.dumps(data), encoding="utf-8")
     self.producer.send(self.data_channel, encoded_data)
 
